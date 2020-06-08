@@ -9,24 +9,49 @@
 <link href='https://fonts.googleapis.com/css?family=Hind:300' rel='stylesheet' type='text/css'>
 <link href='https://fonts.googleapis.com/css?family=Open+Sans+Condensed:300' rel='stylesheet' type='text/css'>
 <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
-  
+  <style>
+	  html { overflow-y: scroll; }
+body { position: absolute; }
+  </style>
 </head>
 
 <body>
  <div class="login">
-	<h1>Predict Salary Analysis</h1>
-
+	<h1>Will customer leave the bank?</h1>
+	
      <!-- Main Input For Receiving Query to our ML -->
-    <form action="{{ url_for('predict')}}"method="post">
-    	<input type="text" name="experience" placeholder="Experience" required="required" />
-        <input type="text" name="test_score" placeholder="Test Score" required="required" />
-		<input type="text" name="interview_score" placeholder="Interview Score" required="required" />
-
-        <button type="submit" class="btn btn-primary btn-block btn-large">Predict</button>
+    <form action="{{ url_for('predict')}}" method="post">
+    	<select name="country">
+    		<option selected=selected> Choose a country </option>
+    		<option value='france'>France</option>
+    		<option value='spain'>Spain</option>
+    		<option value='germany'>Germany</option>
+    	</select>
+    	<select name="gender">
+    		<option selected=selected> Gender </option>
+    		<option value='1'>Male</option>
+    		<option value='0'>Female</option>
+    	</select>
+    	<select name="credit_card">
+    		<option selected=selected> Has credit card? </option>
+    		<option value='1'>Yes</option>
+    		<option value='0'>No</option>
+    	</select>
+    	<select name="active">
+    		<option selected=selected> Active Member? </option>
+    		<option value='1'>Yes</option>
+    		<option value='0'>No</option>
+    	</select>
+        <input type="text" name="credit_score" placeholder="Credit Score" required="required" />
+        <input type="text" name="age" placeholder="Age" required="required" />
+        <input type="text" name="tenure" placeholder="Tenure" required="required" />
+        <input type="text" name="balance" placeholder="Balance" required="required" />
+        <input type="text" name="products" placeholder="No. of products" required="required" />
+        <input type="text" name="salary" placeholder="Salary" required="required" />
+		<button type="submit" class="btn btn-primary btn-block btn-large">Predict</button>
+		
     </form>
-
-   <br>
-   <br>
+ <P></P>
    {{ prediction_text }}
 
  </div>
